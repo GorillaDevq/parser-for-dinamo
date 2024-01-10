@@ -1,0 +1,19 @@
+.GameBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.widget {
+  width: var(--game-width);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  display: flex;
+  gap: 100px;
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
+}

@@ -1,0 +1,56 @@
+.Game {
+  padding: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--inverted-bg-color);
+  border-radius: 10px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  transform: translateX(calc((100% - 300px) / 2));
+}
+
+.title {
+  font: var(--font-m);
+  color: var(--secondary-color);
+}
+
+.gameContainer {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.firstTeamImage {
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.secondTeamImage {
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.score {
+  font: var(--font-l);
+  color: var(--secondary-color);
+}
+
+.caption {
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.statIcon {
+  fill: var(--secondary-color);
+  width: 30px;
+  height: 30px;
+}

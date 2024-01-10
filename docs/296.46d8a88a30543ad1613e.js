@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdinamo=self.webpackChunkdinamo||[]).push([[296],{296:(a,e,n)=>{n.r(e),n.d(e,{default:()=>r});var s=n(893),i=n(655);function r(){return(0,s.jsx)("div",{className:"about",children:(0,s.jsx)(i.rU,{to:"/",children:"Main Page"})})}}}]);
