@@ -22,14 +22,74 @@ interface TeamName {
 }
 
 interface Player {
-
+    PersonInfo: PersonInfo,
+    PersonID: number,
+    PlayerNumber: number,
+    DisplayNumber: string,
+    Capitan: number,
+    PersonBirth: string,
+    Age: number,
+    PosID: number,
+    Position: string,
+    NationalityId: string,
+    CountryId: string,
+    CountryCodeIOC: string,
+    CountryName: string,
+    Rank: string,
+    Height: number,
+    Weight: number,
+    IsActive: boolean,
+    ActiveStatus: string,
+    PhotoUrl: string
 }
 
-interface GameApiData {
+interface PersonInfo {
+    Age: number,
+    PersonID: number,
+    PersonGUID: null,
+    PersonLastNameRu: string,
+    PersonFirstNameRu: string,
+    PersonSecondNameRu: string,
+    PersonFullNameRu: string,
+    PersonLastNameEn: string,
+    PersonFirstNameEn: string,
+    PersonSecondNameEn: string,
+    PersonFullNameEn: string,
+    PersonNickNameRu: null,
+    PersonNickNameEn: null,
+    PersonGender: number,
+    PersonBirthday: string,
+    PersonBirthYear: number,
+    PersonBirth: string,
+    PersonHeight: number,
+    PersonWeight: number,
+    PersonBornIn: null,
+    PersonBornInRegion: null,
+    PersonCountry: null,
+    PersonRegion: null,
+    PersonStatus: number,
+    SysStatus: number,
+    SysLastChanged: string,
+    SysUser: null,
+    SysMyUser: null,
+    Coaches: [],
+    Officials: [],
+    PersonPhotoes: [],
+    Players: [],
+    Referees: [],
+    GameStartlists: [],
+    Country: null,
+    PersonOldNames: [],
+    PersonContacts: []
+}
+
+interface TeamRosterData {
     TeamID: number,
     TeamName: TeamName,
     Players: Player[],
-
+    AvgAge: null,
+    AvgHeight: null,
+    AvgWeight: null
 }
 
 class GameApi {
@@ -39,7 +99,7 @@ class GameApi {
         this.baseUrl = baseUrl
     }
 
-    _makeRequest = async <T>(url: string, options: RequestInit) :Promise<T> => {
+    _makeRequest = async <T>(url: string, options?: RequestInit) :Promise<T> => {
         try {
             const response = await fetch(url, options)
             if (response.ok) {
@@ -53,7 +113,11 @@ class GameApi {
 
     }
 
-    getTeamRoster = async () :Promise<GameApiData> => {
-        return
+    getTeamRoster = async () :Promise<TeamRosterData> => {
+        try {
+            return await this._makeRequest(this.baseUrl + '/Widget/TeamRoster/28016?compId=42724&format=json&lang=ru')
+        } catch (err) {
+
+        }
     }
 }
