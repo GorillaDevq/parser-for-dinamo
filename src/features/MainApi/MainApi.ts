@@ -56,12 +56,12 @@ class MainApi {
         }
     }
 
-    public async getGameProtocol(gameId: number) :Promise<any> {
+    public async getGameProtocol(gameId: number) :Promise<GameData> {
         const endpoint = `/Widget/GetOnline/${gameId}?format=json&lang=ru`;
         const url = this.baseUrl + endpoint;
 
         try {
-            return await this._makeRequest<any>(url);
+            return await this._makeRequest<GameData>(url);
         } catch (err) {
             console.log(`Error in getGameProtocol: ${err}`);
             throw new Error('Failed to get game protocol');
@@ -69,7 +69,7 @@ class MainApi {
     }
     // Игроки/статы могут приходить null нужно на фронте делать проверку
     // если null слать нахуй этого игрока
-    // Игрок мог кинуть 1 раз - забить 0 раз в забитых будет null
+    // Игрок мог кинуть 1 раз - забить 0 раз в забитых будет null, а процент будет отображаться как 0/1
 }
 
 export const mainApi = new MainApi('https://org.infobasket.su', 28016);
