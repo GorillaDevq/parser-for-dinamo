@@ -19,7 +19,6 @@ class MainApi {
             console.error(`Error in _makeRequest: ${err}`);
             throw new Error('Failed to make the request.');
         }
-
     }
 
     public async getTeamRoster() :Promise<TeamRosterData> {
@@ -68,6 +67,9 @@ class MainApi {
             throw new Error('Failed to get game protocol');
         }
     }
+    // Игроки/статы могут приходить null нужно на фронте делать проверку
+    // если null слать нахуй этого игрока
+    // Игрок мог кинуть 1 раз - забить 0 раз в забитых будет null
 }
 
 export const mainApi = new MainApi('https://org.infobasket.su', 28016);
