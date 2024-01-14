@@ -121,7 +121,7 @@ interface TeamRosterData {
     TeamName: TeamName;
     Players: Player[];
     Coaches: Coach[];
-    Staff: Staff[]
+    Staff: Staff[];
     AvgAge: null;
     AvgHeight: null;
     AvgWeight: null;

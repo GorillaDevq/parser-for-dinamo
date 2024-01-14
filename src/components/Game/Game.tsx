@@ -5,47 +5,42 @@ import StatIcon from "shared/assets/icons/stat-icon.svg";
 
 interface GameProps extends TeamGameData{
     className?: string;
-    title: string;
-    score: string;
-    firstTeamIcon: string;
-    secondTeamIcon: string;
 }
 
 export const Game = (props: GameProps) => {
     const {
         className,
-        title,
-        score,
-        firstTeamIcon,
-        secondTeamIcon,
         GameStatus,
+        DisplayDateTimeMsk,
+        TeamLogoA,
+        TeamLogoB,
         ScoreA,
         ScoreB,
     } = props;
-    console.log(GameStatus)
+
     return (
         <div className={classNames(cls.Game, {}, [className])}>
-            <h3 className={cls.title}>{title}</h3>
+            <h3 className={cls.title}>{DisplayDateTimeMsk}</h3>
             <div className={cls.gameContainer}>
                 <div
-                    style={{backgroundImage: `url(${firstTeamIcon})`}}
+                    style={{backgroundImage: `url(${TeamLogoA})`}}
                     className={cls.firstTeamImage}
                 />
-                {GameStatus === 1
+                {GameStatus
                     ? (<div className={cls.score}>{`${ScoreA} : ${ScoreB}`}</div>)
                     : (<div className={cls.score}>Купить билет</div>)
                 }
                 <div
-                    style={{backgroundImage: `url(${secondTeamIcon})`}}
+                    style={{backgroundImage: `url(${TeamLogoB})`}}
                     className={cls.secondTeamImage}
                 />
             </div>
-            <Button
-                theme={ThemeButton.GAME}
-            >
-                <StatIcon className={cls.statIcon}/>
-                Полная статистика матча
-            </Button>
+            {GameStatus === 1 &&
+                <Button theme={ThemeButton.GAME}>
+                    <StatIcon className={cls.statIcon}/>
+                    Полная статистика матча
+                </Button>
+            }
         </div>
     );
 };

@@ -1,0 +1,62 @@
+.GameItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.gameItem {
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  &__body {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__team {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+
+    &:last-of-type {
+      text-align: end;
+    }
+  }
+
+  &__logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  &__name {
+    width: 100px;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.statIcon {
+  fill: var(--secondary-color);
+  width: 30px;
+  height: 30px;
+}

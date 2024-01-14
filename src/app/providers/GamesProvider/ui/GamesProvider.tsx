@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const GamesProvider :FC<Props> = ({children}) => {
-    const [Games, setGames] = useState([])
+    const [games, setGames] = useState<TeamGameData[]>([])
 
     const fetchGames = useCallback(async () => {
         return await mainApi.getTeamGames()
@@ -20,7 +20,7 @@ export const GamesProvider :FC<Props> = ({children}) => {
     }, [fetchGames]);
 
     return (
-        <GamesContext.Provider value={Games}>
+        <GamesContext.Provider value={games}>
             {children}
         </GamesContext.Provider>
     )

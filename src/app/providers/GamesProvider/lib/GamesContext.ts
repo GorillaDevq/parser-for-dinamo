@@ -1,3 +1,3 @@
 import {createContext} from "react";
 
-export const GamesContext = createContext([])
+export const GamesContext = createContext<TeamGameData[]>([])
