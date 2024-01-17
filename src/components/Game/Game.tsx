@@ -2,21 +2,34 @@ import {classNames} from "shared/lib/classNames/classNames";
 import cls from './Game.module.scss';
 import {Button, ThemeButton} from "shared/ui/Button/Button";
 import StatIcon from "shared/assets/icons/stat-icon.svg";
+import {PopupState} from "widgets/GameProtocol";
+import {Dispatch, SetStateAction} from "react";
 
-interface GameProps extends TeamGameData{
+interface GameProps {
     className?: string;
+    popupState?: PopupState;
+    setPopupState?: Dispatch<SetStateAction<PopupState>>;
+    protocol: boolean;
+    game: TeamGameData;
 }
 
 export const Game = (props: GameProps) => {
+    const { className, game, protocol, setPopupState, popupState } = props;
+
     const {
-        className,
-        GameStatus,
-        DisplayDateTimeMsk,
-        TeamLogoA,
-        TeamLogoB,
-        ScoreA,
-        ScoreB,
-    } = props;
+        GameStatus, DisplayDateTimeMsk,
+        TeamLogoA, TeamLogoB,
+        ScoreA, ScoreB, GameID
+    } = game
+
+    const onClickProtocol = () => {
+        setPopupState({
+            ...popupState,
+            gameId: GameID,
+            gameInfo: game,
+            isOpen: true,
+        })
+    }
 
     return (
         <div className={classNames(cls.Game, {}, [className])}>
@@ -35,8 +48,8 @@ export const Game = (props: GameProps) => {
                     className={cls.secondTeamImage}
                 />
             </div>
-            {GameStatus === 1 &&
-                <Button theme={ThemeButton.GAME}>
+            {GameStatus === 1 && protocol &&
+                <Button theme={ThemeButton.GAME} onClick={onClickProtocol}>
                     <StatIcon className={cls.statIcon}/>
                     Полная статистика матча
                 </Button>
